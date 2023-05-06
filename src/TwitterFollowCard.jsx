@@ -1,5 +1,7 @@
-export function TwitterFollowCard({ userName, name, isFollowing, formatUserName }) {
-  return (
+export function TwitterFollowCard({ userName ='unknown', children, isFollowing, formatUserName }) {
+  const text = isFollowing ? 'Siguiendo' : 'Seguir'
+  
+    return (
     <article>
       <header>
         <img
@@ -7,12 +9,12 @@ export function TwitterFollowCard({ userName, name, isFollowing, formatUserName 
           alt="Img de Tom"
         />
         <div>
-          <strong>{name}</strong>
+          <strong>{children}</strong>
           <span>{formatUserName(userName)}</span>
         </div>
       </header>
       <aside>
-        <button>Seguir</button>
+        <button>{text}</button>
       </aside>
     </article>
   );
