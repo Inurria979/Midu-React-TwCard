@@ -1,6 +1,16 @@
-export function TwitterFollowCard({ userName ='unknown', children, isFollowing, formatUserName }) {
-  const text = isFollowing ? 'Siguiendo' : 'Seguir'
+import { useState } from "react";
+
+
+export function TwitterFollowCard({ userName ='unknown', children, formatUserName }) {
   
+    const [isFollowing, setIsFollowing] = useState(false)
+  
+    const text = isFollowing ? 'Siguiendo' : 'Seguir'
+  //Esto es un estado interno, por tanto es mucho mas 
+  //Facil con React que vanilla JS
+    const handleClick = () =>{
+        setIsFollowing(!isFollowing)
+    }
     return (
     <article>
       <header>
@@ -14,7 +24,8 @@ export function TwitterFollowCard({ userName ='unknown', children, isFollowing, 
         </div>
       </header>
       <aside>
-        <button>{text}</button>
+        <button onClick={handleClick}>
+            {text}</button>
       </aside>
     </article>
   );
